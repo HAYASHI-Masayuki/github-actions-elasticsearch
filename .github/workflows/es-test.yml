@@ -8,6 +8,9 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     steps:
+      - name: test
+        run: apt update && apt install sudo
+
       - name: Configure sysctl limits
         run: |
           sudo swapoff -a
@@ -20,3 +23,7 @@ jobs:
         with:
           stack-version: 8.2.0
           security-enabled: false
+
+      - name: test
+        run: |
+          curl http://localhost:9200
