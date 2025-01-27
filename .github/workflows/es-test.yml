@@ -6,11 +6,8 @@ on:
       - main
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - name: test
-        run: apt update && apt install sudo
-
       - name: Configure sysctl limits
         run: |
           sudo swapoff -a
@@ -21,7 +18,7 @@ jobs:
       - name: Runs Elasticsearch
         uses: elastic/elastic-github-actions/elasticsearch@master
         with:
-          stack-version: 8.2.0
+          stack-version: 7.5.2
           security-enabled: false
 
       - name: test
